@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI 刷題庫</title>
+  <style>
+    body{font-family: "Noto Sans TC", Arial; padding:16px; max-width:900px; margin:auto;}
+    .controls{display:flex;gap:8px;margin-bottom:12px;}
+    .question{border:1px solid #ddd;padding:12px;border-radius:8px;margin-bottom:8px;}
+    .nav{display:flex;gap:8px;margin-top:12px;}
+    .result-correct{color:green;} .result-wrong{color:red;}
+  </style>
+</head>
+<body>
+  <h1>AI 刷題庫 (Demo)</h1>
+
+  <div class="controls">
+    <input type="file" id="importFile" />
+    <button id="btnCreateDemo">載入示範題庫</button>
+    <select id="selectCount"><option value="20">20</option><option value="40">40</option><option value="60">60</option><option value="80">80</option><option value="all">全部</option></select>
+    <button id="btnStart">開始刷題</button>
+    <button id="btnExport">匯出題庫(JSON)</button>
+  </div>
+
+  <div id="quizArea" style="display:none;">
+    <div id="progress"></div>
+    <div class="question" id="questionBox">
+      <div id="prompt"></div>
+      <textarea id="answerInput" rows="4" style="width:100%"></textarea>
+      <div style="margin-top:8px;">
+        <button id="btnAIAnswer">AI 自動作答 (需後端)</button>
+        <button id="btnSaveEdit">儲存題目修改</button>
+      </div>
+      <div class="nav">
+        <button id="btnPrev">上一題</button>
+        <button id="btnNext">下一題</button>
+        <button id="btnSubmit">交卷</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="reportArea" style="display:none;">
+    <h2>答題報告</h2>
+    <div id="reportList"></div>
+    <button id="btnRetry">再練一次</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
